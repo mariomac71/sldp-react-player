@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 import React, { useEffect, useRef } from "react";
-// @ts-ignore
 import { getSDK } from './utils'
 const SLDP_LIB_URL = 'https://softvelum.com/player/releases/sldp-vVERSION.min.js';
 const SLDP_GLOBAL = 'SLDP';
@@ -51,7 +50,10 @@ const Player = ({
     }>();
 
     useEffect(() => {
-        getSDK(SLDP_LIB_URL.replace('VERSION', sldpVersion), SLDP_GLOBAL).then((SLDP: any) => {
+        getSDK(
+            SLDP_LIB_URL.replace('VERSION', sldpVersion),
+            SLDP_GLOBAL
+        ).then((SLDP: any) => {
             playerInstance.current = SLDP.init(Object.assign({}, sldpOptions, {
                 container: wrapperId,
                 stream_url: streamUrl,
