@@ -26,7 +26,7 @@ type Props = {
     autoplay?: boolean;
     muted?: boolean;
     sldpOptions?: SldpOptions;
-    wrapperId: string;
+    wrapperId?: string;
 }
 
 const Player = ({
