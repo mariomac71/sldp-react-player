@@ -1,0 +1,34 @@
+{
+  "name": "@fabrizio.armango/sldp-react-player",
+  "version": "1.0.1",
+  "description": "SLDP React Player",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/fabrizio.armango/sldp-react-player.git"
+  },
+  "author": "Fabrizio Armango",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/fabrizio.armango/sldp-react-player/issues"
+  },
+  "homepage": "https://gitlab.com/fabrizio.armango/sldp-react-player#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/uuid": "^9.0.0",
+    "prettier": "^2.8.4",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.9.5"
+  }
+}
