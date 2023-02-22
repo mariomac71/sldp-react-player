@@ -2,7 +2,7 @@
  * Thanks to @cookpete 
  * https://github.com/cookpete/react-player/blob/master/src/utils.js
  */
-import loadScript from 'load-script'
+import loadScript from 'load-script';
 function getGlobal (key) {
     if (window[key]) {
       return window[key]

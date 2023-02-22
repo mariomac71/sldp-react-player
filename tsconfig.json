@@ -1,12 +1,14 @@
 {
     "compilerOptions": {
-      "target": "es2015",
-      "module": "commonjs",
+      "allowJs": true,
+      "target": "ES6",
+      "module": "CommonJS",
       "declaration": true,
       "outDir": "./lib",
       "strict": true,
       "jsx": "react",
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "moduleResolution": "node"
     },
     "include": ["src"],
     "exclude": ["node_modules", "**/__tests__/*"]
