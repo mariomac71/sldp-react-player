@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "build": "tsc"
+    "build": "tsc",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook --output-dir public"
   },
   "repository": {
     "type": "git",
@@ -25,9 +27,20 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
     "@types/react": "^18.0.28",
     "@types/uuid": "^9.0.0",
+    "babel-loader": "^8.3.0",
     "prettier": "^2.8.4",
+    "react-dom": "^18.2.0",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.9.5"

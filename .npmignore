@@ -1,3 +1,5 @@
 src
 tests
 yarn-error.log
+.gitlab
+.storybook

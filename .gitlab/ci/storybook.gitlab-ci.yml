@@ -1,0 +1,21 @@
+setup:
+  stage: dependencies
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+  artifacts:
+    paths:
+      - node_modules/
+  script:
+    - npm install
+
+pages:
+  stage: pages
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+      - public
+  script:
+    - npm run build-storybook

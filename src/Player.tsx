@@ -26,7 +26,7 @@ type Props = {
     muted?: boolean;
     sldpOptions?: SldpOptions;
     wrapperId?: string;
-}
+};
 
 const Player = ({
     sldpVersion = '2.24.0',
