@@ -28,6 +28,8 @@ type Props = {
     wrapperId?: string;
 };
 
+const DEFAULT_CLASSNAME = "sldp-react-player";
+
 const Player = ({
     sldpVersion = '2.24.0',
     streamUrl,
@@ -66,11 +68,12 @@ const Player = ({
         });
 
         return () => {
-            playerInstance.current && playerInstance.current.destroy();
+            if (playerInstance.current)
+                playerInstance.current.destroy();
         }
-    }, []);
+    }, [streamUrl]);
 
-    return <div id={wrapperId}></div>
+    return <div id={wrapperId} className={DEFAULT_CLASSNAME}></div>
 };
 
 export default Player;

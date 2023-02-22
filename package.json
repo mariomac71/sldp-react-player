@@ -1,6 +1,6 @@
 {
   "name": "@fabrizio.armango/sldp-react-player",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "SLDP React Player",
   "main": "lib/index.js",
   "scripts": {
@@ -44,5 +44,8 @@
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.9.5"
-  }
+  },
+  "keywords": [
+    "react-component", "ui component", "sldp", "react", "player", "video", "stream", "streaming", "component", "Softvelum", "SLDP Player"
+  ]
 }
