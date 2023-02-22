@@ -1,5 +1,6 @@
 setup:
   stage: dependencies
+  image: node:latest
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
@@ -11,6 +12,7 @@ setup:
     - npm install
 
 pages:
+  image: node:latest
   stage: pages
   artifacts:
     expire_in: 1 week
