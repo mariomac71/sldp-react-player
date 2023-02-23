@@ -71,7 +71,7 @@ const Player = ({
             if (playerInstance.current)
                 playerInstance.current.destroy();
         }
-    }, [streamUrl]);
+    }, [wrapperId, streamUrl, autoplay, muted, height, width, controls]);
 
     return <div id={wrapperId} className={DEFAULT_CLASSNAME}></div>
 };

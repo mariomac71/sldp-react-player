@@ -1,6 +1,6 @@
 {
   "name": "@fabrizio.armango/sldp-react-player",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "SLDP React Player",
   "main": "lib/index.js",
   "scripts": {
