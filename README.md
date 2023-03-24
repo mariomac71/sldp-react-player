@@ -3,7 +3,7 @@
 Sldp React Player is a lightweight React component that enables playing streams with the [SLDP](https://softvelum.com/sldp) protocol in modern browsers using the free version of the SLDP Player by Softvelum. The component is easy to use and customizable, allowing for seamless integration into your React projects.
 
 ## Live Demo
-Check out the [**Live Demo**](https://fabrizio.armango.gitlab.io/sldp-react-player) to see sldp-react-player in action.
+Check out the [**Live Demo**](https://fabrizioarmango.gitlab.io/sldp-react-player) to see sldp-react-player in action.
 
 ## Installation
 To install sldp-react-player, simply run the following command:
