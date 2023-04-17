@@ -4,10 +4,10 @@ import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 
 interface IVideoJSPlayer {
-    srcObject?: Blob
-    src: Function;
-    play: Function;
-    pause: Function;
+    srcObject?: Blob;
+    src: (streamUrl: string) => void;
+    play: () => void;
+    pause: () => void;
 }
 
 const DEFAULT_CLASSNAME = "sldp-react-player";
@@ -22,22 +22,19 @@ type Props = {
 
 const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`, muted, width, height }: Props) => {
     const [videoEl, setVideoEl] = useState<HTMLVideoElement>();
-    console.log(videoEl);
     const [playerInst, setPlayerInst] = useState<IVideoJSPlayer>();
 
     useEffect(() => {
-        console.log(videoEl, streamUrl, playerInst, muted);
         if (videoEl) {
             if (!playerInst) {
-                console.log("setting new instance");
                 setPlayerInst(videojs(videoEl, {
-                    muted: muted,
+                    muted,
                     autoplay: true,
                     controls: false,
                     sources: streamUrl,
                     fluid: true
                 }, function onPlayerReady() {
-                    console.log('onPlayerReady');
+                    // do nothing
                 }));
             } else {
                 const isPlayerAlreadyPlaying = videoEl && videoEl.currentTime > 0 && !videoEl.paused && !videoEl.ended && videoEl.readyState > videoEl.HAVE_CURRENT_DATA;
@@ -51,11 +48,13 @@ const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`
                                 return playerInst.play();
                             })
                             .then(_ => {
+                                // do nothing
                             })
                             .catch(e => {
+                                // do nothing
                             })
                     } catch (ex) {
-                        console.warn(ex);
+                        // do nothing
                     }
                 }
             }
@@ -68,14 +67,14 @@ const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`
                     try {
                         playerInst.pause();
                     } catch (ex) {
-                        console.warn(ex);
+                        // do nothing
                     }
                 }
             }
         }
     }, [videoEl, streamUrl, playerInst, muted]);
 
-    return <div id={wrapperId} className={DEFAULT_CLASSNAME} style={{ width: width, height: height }}>
+    return <div id={wrapperId} className={DEFAULT_CLASSNAME} style={{ width, height }}>
         <video ref={(el: HTMLVideoElement) => setVideoEl(el)} className="video-js" width="100%" height="100%"></video>
     </div>
 }

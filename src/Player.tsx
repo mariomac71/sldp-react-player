@@ -26,7 +26,7 @@ const Player = (props: SldpProps) => {
     }, []);
 
     if (isIPhone) {
-        return <FallbackPlayer wrapperId={props.wrapperId} muted={muted} streamUrl={fallbackStreamUrl} width={width} height={height}/>
+        return <FallbackPlayer wrapperId={props.wrapperId} muted={muted} streamUrl={fallbackStreamUrl} width={width} height={height} />
     }
     return <StandardPlayer {...props} streamUrl={sldpStreamUrl} />
 };
