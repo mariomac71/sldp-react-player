@@ -39,6 +39,23 @@ import SldpReactPlayer from '@fabrizio.armango/sldp-react-player';
 />
 ```
 
+## iOS
+SLDP Protocol seems not to work on iPhones ([check Browser support section](https://softvelum.com/player/web/)) without installing an additional application first.
+
+A simple workaround has been implemented, providing the component with 2 urls as `streamUrl` separated by ";".
+
+The first url will be used as default sldp stream and the second one for iPhone devices using of [video.js](https://github.com/videojs/video.js).
+
+### Example
+``` jsx
+
+<SldpReactPlayer 
+    // props
+    streamUrl={'wss://vd1.wmspanel.com/video_demo_without_ads/stream; https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'}
+/>
+
+```
+
 ## Support
 If you need any support or have any questions, please reach out via email at fabrizio.armango@gmail.com.
 
