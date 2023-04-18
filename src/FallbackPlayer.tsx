@@ -1,14 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import videojs from 'video.js';
-import 'video.js/dist/video-js.css';
-
-interface IVideoJSPlayer {
-    srcObject?: Blob;
-    src: (streamUrl: string) => void;
-    play: () => void;
-    pause: () => void;
-}
+import Hls from 'hls.js';
 
 const DEFAULT_CLASSNAME = "sldp-react-player";
 
@@ -21,83 +13,36 @@ type Props = {
 };
 
 const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`, muted, width, height }: Props) => {
-    const [videoEl, setVideoEl] = useState<HTMLVideoElement>();
-    const [playerInst, setPlayerInst] = useState<IVideoJSPlayer>();
+    const [videoEl, setVideoEl] = useState<HTMLMediaElement>();
+
 
     useEffect(() => {
-        if (videoEl) {
-            if (!playerInst) {
-                setPlayerInst(videojs(videoEl, {
-                    playsinline: true,
-                    muted,
-                    autoplay: true,
-                    controls: false,
-                    sources: streamUrl,
-                    fluid: true
-                }, function onPlayerReady() {
-                    // do nothing
-                }));
-            } else {
-                const isPlayerAlreadyPlaying = videoEl && videoEl.currentTime > 0 && !videoEl.paused && !videoEl.ended && videoEl.readyState > videoEl.HAVE_CURRENT_DATA;
-                if (!isPlayerAlreadyPlaying) {
-                    try {
-                        playerInst.src(streamUrl);
-                        fetch(streamUrl)
-                            .then(response => response.blob())
-                            .then(blob => {
-                                playerInst.srcObject = blob;
-                                return playerInst.play();
-                            })
-                            .then(_ => {
-                                // do nothing
-                            })
-                            .catch(e => {
-                                // do nothing
-                            })
-                    } catch (ex) {
-                        // do nothing
-                    }
-                }
-            }
+        if (!videoEl) return; 
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+                console.log('video and hls.js are now bound together !');
+            });
+            hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+                console.log(
+                    'manifest loaded, found ' + data.levels.length + ' quality level'
+                );
+            });
+            hls.loadSource(streamUrl);
+            hls.attachMedia(videoEl);
         }
+    }, [videoEl, streamUrl]);
 
-        return () => {
-            if (playerInst) {
-                const isPlayerAlreadyPlaying = videoEl && videoEl.currentTime > 0 && !videoEl.paused && !videoEl.ended && videoEl.readyState > videoEl.HAVE_CURRENT_DATA;
-                if (isPlayerAlreadyPlaying) {
-                    try {
-                        playerInst.pause();
-                    } catch (ex) {
-                        // do nothing
-                    }
-                }
-            }
-        }
-    }, [videoEl, streamUrl, playerInst, muted]);
-
-    function onVideoError() {
-    if (!videoEl) return;
-        if (playerInst) playerInst.src(streamUrl);
-    }
-
-      
-    useEffect(() => {
-        if (videoEl) {
-            // eslint-disable-next-line
-            console.warn("FallbackPlayer error:", videoEl.error);
-          videoEl.addEventListener('error', onVideoError);
-        }
-    
-        return () => {
-          if (videoEl) {
-            videoEl.removeEventListener('error', onVideoError);
-          }
-        }
-      }, [videoEl]);
-    
-
-    return <div id={wrapperId} className={DEFAULT_CLASSNAME} style={{ width, height }}>
-        <video ref={(el: HTMLVideoElement) => setVideoEl(el)} className="video-js" width="100%" height="100%"></video>
+    return <div id={wrapperId} className={DEFAULT_CLASSNAME} style={{ width, height }} >
+        <video ref={(el: HTMLVideoElement) => setVideoEl(el)}
+            className="video-js"
+            width="100%"
+            height="100%"
+            controls={false}
+            autoPlay
+            muted={muted}
+            playsInline
+        ></video>
     </div>
 }
 

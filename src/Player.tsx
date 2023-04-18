@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MobileDetect from 'mobile-detect';
-
 import StandardPlayer from './StandardPlayer';
 import type { Props as SldpProps } from './StandardPlayer';
 import FallbackPlayer from './FallbackPlayer';
