@@ -83,6 +83,8 @@ const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`
       
     useEffect(() => {
         if (videoEl) {
+            // eslint-disable-next-line
+            console.warn("FallbackPlayer error:", videoEl.error);
           videoEl.addEventListener('error', onVideoError);
         }
     
