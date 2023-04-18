@@ -77,7 +77,6 @@ const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`
 
     function onVideoError() {
     if (!videoEl) return;
-        console.warn("error", videoEl.error);
         if (playerInst) playerInst.src(streamUrl);
     }
 
