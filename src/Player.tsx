@@ -16,6 +16,7 @@ const Player = (props: SldpProps) => {
         return tmp[0].trim();
     }, [streamUrl]);
 
+    const [deviceRecognized, setDeviceRecognized] = useState(false);
     const [isIPhone, setIsIPhone] = useState(false);
     useEffect(() => {
         if (!window.navigator) {
@@ -23,8 +24,10 @@ const Player = (props: SldpProps) => {
         }
         const mobileDetect = new MobileDetect(window.navigator.userAgent);
         setIsIPhone(mobileDetect.is('iPhone'));
+        setDeviceRecognized(true);
     }, []);
 
+    if (!deviceRecognized) return null;
     if (isIPhone) {
         return <FallbackPlayer wrapperId={props.wrapperId} muted={muted} streamUrl={fallbackStreamUrl} width={width} height={height} />
     }

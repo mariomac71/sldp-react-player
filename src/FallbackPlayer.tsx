@@ -75,6 +75,26 @@ const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`
         }
     }, [videoEl, streamUrl, playerInst, muted]);
 
+    function onVideoError() {
+    if (!videoEl) return;
+        console.warn("error", videoEl.error);
+        if (playerInst) playerInst.src(streamUrl);
+    }
+
+      
+    useEffect(() => {
+        if (videoEl) {
+          videoEl.addEventListener('error', onVideoError);
+        }
+    
+        return () => {
+          if (videoEl) {
+            videoEl.removeEventListener('error', onVideoError);
+          }
+        }
+      }, [videoEl]);
+    
+
     return <div id={wrapperId} className={DEFAULT_CLASSNAME} style={{ width, height }}>
         <video ref={(el: HTMLVideoElement) => setVideoEl(el)} className="video-js" width="100%" height="100%"></video>
     </div>
