@@ -28,6 +28,7 @@ const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`
         if (videoEl) {
             if (!playerInst) {
                 setPlayerInst(videojs(videoEl, {
+                    playsinline: true,
                     muted,
                     autoplay: true,
                     controls: false,
