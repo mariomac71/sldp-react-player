@@ -13,7 +13,7 @@ type Props = {
 };
 
 const FallbackPlayer = ({ streamUrl, wrapperId = `sldp-react-player-${uuidv4()}`, muted, width, height }: Props) => {
-    const [videoEl, setVideoEl] = useState<HTMLVideoElement>(null);
+    const [videoEl, setVideoEl] = useState<HTMLVideoElement>();
 
     useEffect(() => {
         if (!videoEl) return;
