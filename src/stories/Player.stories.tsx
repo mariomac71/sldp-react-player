@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Player from '../Player';
 
@@ -6,7 +7,18 @@ const meta: Meta<typeof Player> = {
   component: Player,
   parameters: {
     layout: 'centered',
-  }
+  },
+  decorators: [
+    (StoryComponent) => (
+      <div style={{
+        margin: '1rem',
+        minWidth: '70vw',
+        height: 'auto'
+      }}>
+        <StoryComponent />
+      </div>
+    ),
+  ],
 }
 export default meta;
 
@@ -30,7 +42,7 @@ export const AutoplayMuted: Story = {
 
 export const iPhoneFallback: Story = {
   args: {
-    width: '300px',
+    width: '100%',
     height: 'auto',
     controls: false,
     autoplay: true,
