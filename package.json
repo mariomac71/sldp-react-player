@@ -1,5 +1,5 @@
 {
-  "name": "@mario.mac.rc/sldp-react-player",
+  "name": "@mariomac71/sldp-react-player",
   "version": "1.0.17",
   "description": "SLDP React Player",
   "main": "lib/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/fabrizio.armango/sldp-react-player.git"
+    "url": "git+https://github.com/mariomac71/sldp-react-player.git"
   },
   "author": "Fabrizio Armango",
   "license": "ISC",
