@@ -3,13 +3,13 @@
 Sldp React Player is a lightweight React component that enables playing streams with the [SLDP](https://softvelum.com/sldp) protocol in modern browsers using the free version of the SLDP Player by Softvelum. The component is easy to use and customizable, allowing for seamless integration into your React projects.
 
 ## Live Demo
-Check out the [**Live Demo**](https://fabrizioarmango.gitlab.io/sldp-react-player) to see sldp-react-player in action.
+Check out the [**Live Demo**](https://github.com/mariomac71/sldp-react-player) to see sldp-react-player in action.
 
 ## Installation
 To install sldp-react-player, simply run the following command:
 
 ```
-npm i @fabrizio.armango/sldp-react-player
+npm i @mario.mac.rc/sldp-react-player
 ```
 
 ## Usage 
@@ -21,7 +21,7 @@ Here is an example:
 
 
 ``` jsx
-import SldpReactPlayer from '@fabrizio.armango/sldp-react-player';
+import SldpReactPlayer from '@mario.mac.rc/sldp-react-player';
 
 <SldpReactPlayer 
     streamUrl={'wss://<stream_url>'}
@@ -57,7 +57,7 @@ The first url will be used as default sldp stream and the second one for iPhone 
 ```
 
 ## Support
-If you need any support or have any questions, please reach out via email at fabrizio.armango@gmail.com.
+If you need any support or have any questions, please reach out via email at mario.mac.rc@gmail.com.
 
 ## Roadmap
 - [x] support basic functionality
